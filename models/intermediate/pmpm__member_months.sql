@@ -14,49 +14,49 @@ with src as
          )
 , months as (
     select 1 as month
-    union
+    union all
     select 2 as month
-    union
+    union all
     select 3 as month
-    union
+    union all
     select 4 as month
-    union
+    union all
     select 5 as month
-    union
+    union all
     select 6 as month
-    union
+    union all
     select 7 as month
-    union
+    union all
     select 8 as month
-    union
+    union all
     select 9 as month
-    union
+    union all
     select 10 as month
-    union
+    union all
     select 11 as month
-    union
+    union all
     select 12 as month)
 ,years as (
     select 2013 as year
-    union
+    union all
     select 2014 as year
-    union
+    union all
     select 2015 as year
-    union
+    union all
     select 2016 as year
-    union
+    union all
     select 2017 as year
-    union
+    union all
     select 2018 as year
-    union
+    union all
     select 2019 as year
-    union
+    union all
     select 2020 as year
-    union
+    union all
     select 2021 as year
-    union
+    union all
     select 2022 as year
-    union
+    union all
     select 2023 as year)
 ,dates as (
     select
