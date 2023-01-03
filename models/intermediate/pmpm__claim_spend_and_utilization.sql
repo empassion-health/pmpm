@@ -19,7 +19,7 @@ with medical as
         ,lpad(cast(extract(month from dispensing_date) as string),2,'0') as month
         ,cast(cast(extract(year from dispensing_date) as string) || lpad(cast(extract(month from dispensing_date) as string),2,'0') AS int) AS year_month
         ,cast('pharmacy' as string) as claim_type
-        ,IFNULL(cast(paid_amount as decimal),0) as paid_amount
+        ,paid_amount
     from {{ var('pharmacy_claim') }}
 )
 
