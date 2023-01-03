@@ -70,7 +70,7 @@ with src as
 select distinct 
     patient_id,
     -- member_id,
-    concat(year,lpad(cast(month as string),2,'0')) as year_month,
+    cast(concat(year,lpad(cast(month as string),2,'0')) as int) as year_month,
     year,
     lpad(cast(month as string),2,'0') as month,
     month_start,
