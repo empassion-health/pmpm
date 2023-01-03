@@ -36,10 +36,10 @@ models:
   - name: pmpm__claim_spend_and_utilization
     config:
       database: "{{ var('pmpm_database',var('tuva_database','tuva')) }}"
-      schema: |
-        {%- if var('pmpm_schema',None) != None -%}{{var('pmpm_schema')}}
-        {%- elif var('tuva_schema_prefix',None) != None -%}{{var('tuva_schema_prefix')}}_pmpm
-        {% else %}pmpm{%- endif -%}
+      schema: int #|
+        # {%- if var('pmpm_schema',None) != None -%}{{var('pmpm_schema')}}
+        # {%- elif var('tuva_schema_prefix',None) != None -%}{{var('tuva_schema_prefix')}}_pmpm
+        # {% else %}pmpm{%- endif -%}
       alias: intermediate_claim_spend_and_utilization
       tags: pmpm
       materialized: table
@@ -62,10 +62,10 @@ models:
   - name: pmpm__pmpm_builder
     config:
       database: "{{ var('pmpm_database',var('tuva_database','tuva')) }}"
-      schema: |
-        {%- if var('pmpm_schema',None) != None -%}{{var('pmpm_schema')}}
-        {%- elif var('tuva_schema_prefix',None) != None -%}{{var('tuva_schema_prefix')}}_pmpm
-        {% else %}pmpm{%- endif -%}
+      schema: int #|
+        # {%- if var('pmpm_schema',None) != None -%}{{var('pmpm_schema')}}
+        # {%- elif var('tuva_schema_prefix',None) != None -%}{{var('tuva_schema_prefix')}}_pmpm
+        # {% else %}pmpm{%- endif -%}
       alias: final_pmpm_builder
       tags: pmpm
       materialized: table
