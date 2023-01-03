@@ -63,16 +63,16 @@ with src as
         year
         ,month
         ,cast(cast(year as string)||'-'||cast(month as string)||'-01' as date) as month_start
-        ,dateadd(day,-1,dateadd(month,1,cast(cast(year as string)||'-'||cast(month as string)||'-01') as date)) as month_end
+        ,date_add(date_add(cast(cast(year as string)||'-'||cast(month as string)||'-01' as date), INTERVAL 1 MONTH), INTERVAL -1 DAY) as month_end
     from years
     cross join months
 )
 select distinct 
     patient_id,
     -- member_id,
-    concat(year,lpad(month,2,0)) as year_month,
+    concat(year,lpad(cast(month as string),2,'0')) as year_month,
     year,
-    lpad(month,2,0) as month,
+    lpad(cast(month as string),2,'0') as month,
     month_start,
     month_end,
     -- start_date,
