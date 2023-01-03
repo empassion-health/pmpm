@@ -62,7 +62,7 @@ with src as
     select
         year
         ,month
-        ,(year::varchar||'-'||month::varchar||'-01')::date as month_start
+        ,cast(cast(year as string)||'-'||cast(month as string)||'-01' as date) as month_start
         ,dateadd(day,-1,dateadd(month,1,(year::varchar||'-'||month::varchar||'-01')::date)) as month_end
     from years
     cross join months
