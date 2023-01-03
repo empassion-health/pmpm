@@ -2,7 +2,7 @@
 
 with member_months as
 (
-    select distinct patient_id, year_month
+    select distinct patient_id, cast(year_month as int) as year_month
     from {{ref('pmpm__member_months')}}
 )
 , claim_spend_and_utilization as
@@ -14,7 +14,7 @@ with member_months as
 (
     select 
         patient_id
-        ,year_month
+        ,cast(year_month as int) as year_month
         ,sum(spend) as total_spend
         ,sum(case when claim_type <> 'pharmacy' then spend else 0 end) as medical_spend
         ,sum(case when claim_type = 'pharmacy' then spend else 0 end) as pharmacy_spend
