@@ -62,7 +62,7 @@ models:
   - name: pmpm__pmpm_builder
     config:
       database: "{{ var('pmpm_database',var('tuva_database','tuva')) }}"
-      schema: int #|
+      schema: #|
         # {%- if var('pmpm_schema',None) != None -%}{{var('pmpm_schema')}}
         # {%- elif var('tuva_schema_prefix',None) != None -%}{{var('tuva_schema_prefix')}}_pmpm
         # {% else %}pmpm{%- endif -%}
