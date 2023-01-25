@@ -1,5 +1,10 @@
 # PMPM
 
+## 🔗  Quick Links
+- [Docs](https://tuva-health.github.io/the_tuva_project/#!/overview/pmpm): Learn about the Tuva Project data model
+- [Knowledge Base](https://thetuvaproject.com/docs/intro): Learn about claims data fundamentals and how to do claims data analytics
+<br/><br/>
+
 ## 🧰 What does this package do?
 
 The Tuva Project's PMPM data mart makes it simple to calculate spend and utilization measures over any time period and over any population segment (e.g. patients diagnosed with type 2 diabetes).  The main output table from the data mart - called pmpm_builder - has one record per member per month and includes the spend for that member, broken out by medical and pharmacy (see Table 1 below).

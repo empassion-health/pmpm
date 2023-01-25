@@ -51,7 +51,7 @@ select
     ,claim_type
     ,year_month
     ,count(*) as count_claims
-    ,sum(paid_amount) as spend
+    ,sum(paid_amount) as paid
 from medical
 group by
     patient_id
@@ -65,7 +65,7 @@ select
     ,claim_type
     ,year_month
     ,count(*) as count_claims
-    ,sum(paid_amount) as spend
+    ,sum(paid_amount) as paid
 from pharmacy
 group by
     patient_id

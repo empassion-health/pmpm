@@ -15,9 +15,9 @@ with member_months as
     select 
         patient_id
         ,year_month
-        ,sum(spend) as total_spend
-        ,sum(case when claim_type <> 'pharmacy' then spend else 0 end) as medical_spend
-        ,sum(case when claim_type = 'pharmacy' then spend else 0 end) as pharmacy_spend
+        ,sum(paid) as total_paid
+        ,sum(case when claim_type <> 'pharmacy' then paid else 0 end) as medical_paid
+        ,sum(case when claim_type = 'pharmacy' then paid else 0 end) as pharmacy_paid
 
     from claim_spend_and_utilization
     group by
@@ -29,9 +29,9 @@ select
     mm.patient_id
     ,mm.year_month
     --,plan or payer field
-    ,coalesce(sv.total_spend,0) as total_spend
-    ,coalesce(sv.medical_spend,0) as medical_spend
-    ,coalesce(sv.pharmacy_spend,0) as pharmacy_spend
+    ,coalesce(sv.total_paid,0) as total_paid
+    ,coalesce(sv.medical_paid,0) as medical_paid
+    ,coalesce(sv.pharmacy_paid,0) as pharmacy_paid
 from member_months mm
 left join cte_spend_and_visits sv
     on mm.patient_id = sv.patient_id
