@@ -25,7 +25,7 @@ order by year_month
 
 In January 2023 we’ll be updating this data mart to include utilization (i.e. visits) with break outs of both spend and utilization by 16 different encounter types (e.g. acute inpatient, ED, office visit, SNF, etc.).
 
-For information on data models and to view the entire DAG check out our dbt [Docs](https://tuva-health.github.io/pmpm/#!/overview).
+For information on data models and to view the entire DAG check out our dbt [Docs](https://tuva-health.github.io/the_tuva_project/#!/overview/pmpm).
 
 ## 🔌 What databases are supported?
 
