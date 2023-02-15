@@ -2,7 +2,10 @@
 
 with member_months as
 (
-    select distinct patient_id, cast(year_month as int) as year_month
+    select distinct 
+        patient_id,
+        cast(year_month as int) as year_month,
+        cast(LEFT(year_month,4) || '-' || RIGHT(year_month,2) || '-' || '01' as date) as pmpm_date
     from {{ref('pmpm__member_months')}}
 )
 , claim_spend_and_utilization as
@@ -28,6 +31,7 @@ with member_months as
 select 
     mm.patient_id
     ,mm.year_month
+    ,mm.pmpm_date
     --,plan or payer field
     ,coalesce(sv.total_spend,0) as total_spend
     ,coalesce(sv.medical_spend,0) as medical_spend
