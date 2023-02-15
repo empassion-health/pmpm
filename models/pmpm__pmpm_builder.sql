@@ -5,7 +5,7 @@ with member_months as
     select distinct 
         patient_id,
         cast(year_month as int) as year_month,
-        cast(LEFT(year_month,4) || '-' || RIGHT(year_month,2) || '-' || '01' as date) as pmpm_date
+        cast(LEFT(cast(year_month as string),4) || '-' || RIGHT(cast(year_month as string),2) || '-' || '01' as date) as pmpm_date
     from {{ref('pmpm__member_months')}}
 )
 , claim_spend_and_utilization as
