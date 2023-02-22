@@ -4,6 +4,7 @@ with medical as
 (
     select
         patient_id
+       ,claim_id
        ,extract(year from claim_end_date) as year
        ,lpad(cast(extract(month from claim_end_date) as string),2,'0') as month
        ,cast(cast(extract(year from claim_end_date) as string) || lpad(cast(extract(month from claim_end_date) as string),2,'0') AS int) AS year_month
