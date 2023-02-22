@@ -18,6 +18,7 @@ with member_months as
     select 
         patient_id
         ,cast(year_month as int) as year_month
+        ,encounter_type
         ,sum(spend) as total_spend
         ,sum(case when claim_type <> 'pharmacy' then spend else 0 end) as medical_spend
         ,sum(case when claim_type = 'pharmacy' then spend else 0 end) as pharmacy_spend
@@ -25,13 +26,15 @@ with member_months as
     from claim_spend_and_utilization
     group by
         patient_id
-        ,year_month 
+        ,year_month
+        ,encounter_type
 )
 
 select 
     mm.patient_id
     ,mm.year_month
     ,mm.pmpm_date
+    ,sv.encounter_type
     --,plan or payer field
     ,coalesce(sv.total_spend,0) as total_spend
     ,coalesce(sv.medical_spend,0) as medical_spend
