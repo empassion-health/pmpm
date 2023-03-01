@@ -14,10 +14,9 @@ with medical as
 )
 
 , medical_claim_encounter_mapping as (
-    select
+    select distinct
         patient_id
         ,claim_id
-        ,encounter_id
         ,encounter_type
     from {{ ref('claims_preprocessing__encounter_id') }}
 )
