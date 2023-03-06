@@ -73,7 +73,7 @@ select
     ,claim_type
     ,year_month
     ,encounter_type
-    ,NULL as max_claim_effective_date
+    ,cast(NULL as date) as max_claim_effective_date
     ,count(*) as count_claims
     ,sum(paid_amount) as spend
 from pharmacy
