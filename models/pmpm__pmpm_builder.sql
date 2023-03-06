@@ -19,6 +19,7 @@ with member_months as
         patient_id
         ,cast(year_month as int) as year_month
         ,encounter_type
+        ,max_claim_effective_date
         ,sum(spend) as total_spend
         ,sum(case when claim_type <> 'pharmacy' then spend else 0 end) as medical_spend
         ,sum(case when claim_type = 'pharmacy' then spend else 0 end) as pharmacy_spend
@@ -35,6 +36,7 @@ select
     ,mm.year_month
     ,mm.pmpm_date
     ,sv.encounter_type
+    ,sv.max_claim_effective_date
     --,plan or payer field
     ,coalesce(sv.total_spend,0) as total_spend
     ,coalesce(sv.medical_spend,0) as medical_spend
