@@ -29,6 +29,7 @@ with member_months as
         patient_id
         ,year_month
         ,encounter_type
+        ,max_claim_effective_date
 )
 
 select 
