@@ -10,6 +10,7 @@ with medical as
        ,cast(cast(extract(year from claim_end_date) as string) || lpad(cast(extract(month from claim_end_date) as string),2,'0') AS int) AS year_month
        ,claim_type
        ,paid_amount
+       ,max_claim_effective_date
     from {{ var('medical_claim') }}
 )
 
@@ -30,6 +31,7 @@ with medical as
         ,m.claim_type
         ,em.encounter_type
         ,m.paid_amount
+        ,m.max_claim_effective_date
     from medical m
         left join medical_claim_encounter_mapping em
         ON m.patient_id = em.patient_id
@@ -53,6 +55,7 @@ select
     ,claim_type
     ,year_month
     ,encounter_type
+    ,max_claim_effective_date
     ,count(*) as count_claims
     ,sum(paid_amount) as spend
 from medical_encounter_mapped
@@ -61,6 +64,7 @@ group by
     ,claim_type
     ,year_month
     ,encounter_type
+    ,max_claim_effective_date
 
 union all
 
@@ -69,6 +73,7 @@ select
     ,claim_type
     ,year_month
     ,encounter_type
+    ,NULL as max_claim_effective_date
     ,count(*) as count_claims
     ,sum(paid_amount) as spend
 from pharmacy
@@ -77,3 +82,4 @@ group by
     ,claim_type
     ,year_month
     ,encounter_type
+    ,max_claim_effective_date
