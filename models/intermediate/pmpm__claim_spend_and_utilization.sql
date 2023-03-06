@@ -47,6 +47,7 @@ with medical as
         ,cast('pharmacy' as string) as claim_type
         ,'pharmacy' as encounter_type
         ,paid_amount
+        ,cast(NULL as date) as max_claim_effective_date
     from {{ var('pharmacy_claim') }}
 )
 
@@ -73,7 +74,7 @@ select
     ,claim_type
     ,year_month
     ,encounter_type
-    ,cast(NULL as date) as max_claim_effective_date
+    ,max_claim_effective_date
     ,count(*) as count_claims
     ,sum(paid_amount) as spend
 from pharmacy
