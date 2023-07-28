@@ -45,7 +45,7 @@ models:
       materialized: table
     tests:
        - unique:
-           column_name: "(patient_id || '_'  || claim_type || '_' || year_month)"
+           column_name: "(patient_id || '_'  || claim_type || '_' || year_month || '_' || encounter_type)"
     description: >
       Add model description
     columns:
@@ -71,7 +71,7 @@ models:
       materialized: table
     tests:
        - unique:
-           column_name: "(patient_id || '_' || year_month)"
+           column_name: "(patient_id || '_' || year_month || '_' || encounter_type)"
     description: >
       Add model description
     columns:
