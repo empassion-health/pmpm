@@ -7,7 +7,8 @@ with src as
               enrollment_start_date as start_date,
               enrollment_end_date as end_date,
               payer,
-              payer_type
+              payer_type,
+              max_claim_effective_date
               -- dual_status_code,
               -- medicare_status_code
           from  {{ var('eligibility') }}
@@ -78,7 +79,8 @@ select distinct
     -- start_date,
     -- end_date,
     payer,
-    payer_type
+    payer_type,
+    max_claim_effective_date
     -- dual_status_code,
     -- medicare_status_code
 from src
